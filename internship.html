@@ -1,4 +1,4 @@
-
+<!-- 7358218282 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -474,129 +474,115 @@
 </div>
 
 <!-- start form  -->
-<div class="achivement-form container-xxl py-5 d-flex align-items-center justify-content-around"
+<div class="achivement-form1 container-xxl py-5 d-flex align-items-center justify-content-around"
     style="background-color: #CFFDE1; margin-top: 50px;">
-    <!-- <div class="achivement-img">
-        <img src="./img/formpicture.png" alt="">
-    </div> -->
+    <div class="achivement-img">
+        <img style="height: 100%; width: 70%; object-fit: cover; " src="./img/internship-frm.jpg" alt="">
+    </div>
 
     <form id="achievementForm">
         <div class="text-center mb-5">
             <h6 class="section-title text-center text-primary px-3 animate__animated animate__fadeInUp ourAchievement"
-                style="background-color: #CFFDE1;">ONLINE REGISTER</h6>
-            <h1 class="display-6 animate__animated animate__fadeInDown ourAchievement">Register soon and Book your slot!</h1>
+                style="background-color: #CFFDE1;">OUR ACHIEVEMENT & SUCCESS</h6>
+            <h1 class="display-6 animate__animated animate__fadeInDown ourAchievement">We’d love to hear from you!
+            </h1>
         </div>
-        
         <div class="mb-3">
-            <input type="text" class="form-control" id="appointment_name" placeholder="Name" pattern="^[A-Za-z\s]+$" 
-                required title="Please enter letters only.">
+            <input type="text" class="form-control" id="appointment_name" placeholder="Name"
+                pattern="^[A-Za-z\s]+$" required title="Please enter letters only.">
             <small id="nameError" class="text-danger"></small>
         </div>
-
         <div class="mb-3">
             <input type="text" placeholder="Phone Number *" class="form-control" id="phoneNumber" pattern="^\d{10}$"
                 title="Phone number must be 10 digits" required>
             <small id="phoneError" class="text-danger"></small>
         </div>
-
         <div class="mb-3">
             <input type="email" placeholder="Email *" class="form-control" id="email"
                 pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Please enter a valid email address" required>
             <small id="emailError" class="text-danger"></small>
         </div>
-
-        <!-- New Internship Course Selection -->
         <div class="mb-3">
             <select class="form-control" id="internshipCourse" required>
-                <option value="" disabled selected>Select Internship Course *</option>
-                <option value="Full Stack Developer">Full Stack Developer</option>
-                <option value="Frontend Developer">Frontend Developer</option>
-                <option value="Backend Developer">Backend Developer</option>
+                <option value="">Select Internship Course *</option>
+                <option value="Frontend Development">Frontend Development</option>
+                <option value="Backend Development">Backend Development</option>
+                <option value="Full Stack Development">Full Stack Development</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Data Science">Data Science</option>
             </select>
-            <small id="internshipError" class="text-danger"></small>
+            <small id="courseError" class="text-danger"></small>
         </div>
-
         <div class="mb-3">
             <input type="text" placeholder="Message *" class="form-control" id="message" required>
             <small id="messageError" class="text-danger"></small>
         </div>
-
         <div class="sendWhatsApp-btn">
             <button type="button" class="gradient-primary btn btn-primary py-3"
-                style="margin-left: 420px; font-weight: bold;" id="sendWhatsApp">Send Request</button>
+                style="margin-left: 420px; font-weight: bold; width: 133px;" id="sendWhatsApp">Send Request</button>
         </div>
     </form>
 </div>
 
 <script>
-document.getElementById('sendWhatsApp').addEventListener('click', function () {
-    // Get form data
-    const name = document.getElementById('appointment_name').value.trim();
-    const phoneNumber = document.getElementById('phoneNumber').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const internshipCourse = document.getElementById('internshipCourse').value;
-    const message = document.getElementById('message').value.trim();
+    document.getElementById('sendWhatsApp').addEventListener('click', function () {
+        const name = document.getElementById('appointment_name').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const course = document.getElementById('internshipCourse').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-    // Error fields
-    const nameError = document.getElementById('nameError');
-    const phoneError = document.getElementById('phoneError');
-    const emailError = document.getElementById('emailError');
-    const internshipError = document.getElementById('internshipError');
-    const messageError = document.getElementById('messageError');
+        const nameError = document.getElementById('nameError');
+        const phoneError = document.getElementById('phoneError');
+        const emailError = document.getElementById('emailError');
+        const courseError = document.getElementById('courseError');
+        const messageError = document.getElementById('messageError');
 
-    // Clear previous errors
-    nameError.textContent = '';
-    phoneError.textContent = '';
-    emailError.textContent = '';
-    internshipError.textContent = '';
-    messageError.textContent = '';
+        nameError.textContent = '';
+        phoneError.textContent = '';
+        emailError.textContent = '';
+        courseError.textContent = '';
+        messageError.textContent = '';
 
-    // Validation
-    let isValid = true;
+        let isValid = true;
 
-    if (!name) {
-        nameError.textContent = 'Name is required';
-        isValid = false;
-    }
+        if (!name) {
+            nameError.textContent = 'Name is required';
+            isValid = false;
+        }
+        if (!phoneNumber || !/^\d{10}$/.test(phoneNumber)) {
+            phoneError.textContent = 'Enter a valid 10-digit phone number';
+            isValid = false;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            emailError.textContent = 'Enter a valid email address';
+            isValid = false;
+        }
+        if (!course) {
+            courseError.textContent = 'Please select an internship course';
+            isValid = false;
+        }
+        if (!message) {
+            messageError.textContent = 'Message is required';
+            isValid = false;
+        }
 
-    if (!phoneNumber || !/^\d{10}$/.test(phoneNumber)) {
-        phoneError.textContent = 'Enter a valid 10-digit phone number';
-        isValid = false;
-    }
+        if (isValid) {
+            const whatsappMessage = `Hello, I would like to connect with you. Here are my details:\n\n` +
+                `Name: ${name}\n` +
+                `Phone Number: ${phoneNumber}\n` +
+                `Email: ${email}\n` +
+                `Internship Course: ${course}\n` +
+                `Message: ${message}`;
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        emailError.textContent = 'Enter a valid email address';
-        isValid = false;
-    }
+            const whatsappNumber = '917358218282';
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-    if (!internshipCourse) {
-        internshipError.textContent = 'Please select an internship course';
-        isValid = false;
-    }
-
-    if (!message) {
-        messageError.textContent = 'Message is required';
-        isValid = false;
-    }
-
-    if (isValid) {
-        // Format WhatsApp message
-        const whatsappMessage = `Hello, I would like to register for an internship. Here are my details:\n\n` +
-            `Name: ${name}\n` +
-            `Phone Number: ${phoneNumber}\n` +
-            `Email: ${email}\n` +
-            `Internship Course: ${internshipCourse}\n` +
-            `Message: ${message}`;
-
-        // WhatsApp URL
-        const whatsappNumber = '917358218282'; // Replace with your WhatsApp number
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-        // Redirect to WhatsApp
-        window.open(whatsappURL, '_blank');
-    }
-});
+            window.open(whatsappURL, '_blank');
+        }
+    });
 </script>
+
 <!-- end form -->
 
 
